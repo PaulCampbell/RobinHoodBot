@@ -71,40 +71,61 @@ namespace BotTask
       
         public static void RespondToTweet(TwitterSearchResult tweet)
         {
+            var arrive_or_depart = "";
+            if (tweet.Text.Contains("arrive"))
+            {
+                arrive_or_depart = "arrive";
+            }
+            else if(tweet.Text.Contains("leave") || tweet.Text.Contains("depart"))
+            {
+                arrive_or_depart = "depart";
+            }
+            else
+            {
+                // we're not sure - respond to both...
+                arrive_or_depart = "either";
+            }
+
             if (tweet.CreatedDate > DateTime.Now.AddMinutes(-10))
             {
-
-                foreach (var a in GetArrivals())
+                if (arrive_or_depart != "depart")
                 {
-                    var tweetWords = tweet.Text.Split(" ".ToCharArray());
-                    foreach (var w in tweetWords.Where(w => (w == a.flight_number) || (w == a.from)))
+                    foreach (var a in GetArrivals())
                     {
-                        var arrivaltime = DateTime.Parse(a.date + " " + a.scheduled_arrival_time);
-                        var bodyText = "will be arriving";
-                        if (arrivaltime < DateTime.Now)
+                        var tweetWords = tweet.Text.Split(" ".ToCharArray());
+                        foreach (var w in tweetWords.Where(w => (w == a.flight_number) || (w == a.from)))
                         {
-                            bodyText = "arrived";
-                        }
+                            var arrivaltime = DateTime.Parse(a.date + " " + a.scheduled_arrival_time);
+                            var bodyText = "will be arriving";
+                            if (arrivaltime < DateTime.Now)
+                            {
+                                bodyText = "arrived";
+                            }
 
-                        Tweet(string.Format("@{4}: Flight {0} from {3} {2} at {1}.", a.flight_number, a.scheduled_arrival_time, bodyText, a.from, tweet.FromUserScreenName));
+                            Tweet(string.Format("@{4}: Flight {0} from {3} {2} at {1}.", a.flight_number,
+                                                a.scheduled_arrival_time, bodyText, a.from, tweet.FromUserScreenName));
+                        }
                     }
                 }
 
-
-
-                foreach (var d in GetDepartures())
+                if (arrive_or_depart != "arrive")
                 {
-                    var tweetWords = tweet.Text.Split(" ".ToCharArray());
-                    foreach (var w in tweetWords.Where(w => (w == d.flight_number) || (w == d.destination)))
+                    foreach (var d in GetDepartures())
                     {
-                        var arrivaltime = DateTime.Parse(d.date + " " + d.scheduled_departure_time);
-                        var bodyText = "will be leaving";
-                        if (arrivaltime < DateTime.Now)
+                        var tweetWords = tweet.Text.Split(" ".ToCharArray());
+                        foreach (var w in tweetWords.Where(w => (w == d.flight_number) || (w == d.destination)))
                         {
-                            bodyText = "left";
-                        }
+                            var arrivaltime = DateTime.Parse(d.date + " " + d.scheduled_departure_time);
+                            var bodyText = "will be leaving";
+                            if (arrivaltime < DateTime.Now)
+                            {
+                                bodyText = "left";
+                            }
 
-                        Tweet(string.Format("@{4}: Flight {0} to {3} {2} at {1}.", d.flight_number, d.scheduled_departure_time, bodyText, d.destination, tweet.FromUserScreenName));
+                            Tweet(string.Format("@{4}: Flight {0} to {3} {2} at {1}.", d.flight_number,
+                                                d.scheduled_departure_time, bodyText, d.destination,
+                                                tweet.FromUserScreenName));
+                        }
                     }
                 }
 
