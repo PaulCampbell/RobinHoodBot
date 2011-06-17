@@ -1,0 +1,8 @@
+c:\users\pcampbell\documents\visual studio 2010\Projects\BotTask\BotTask\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\pcampbell\documents\visual studio 2010\Projects\BotTask\BotTask\bin\Debug\BotTask.exe
+c:\users\pcampbell\documents\visual studio 2010\Projects\BotTask\BotTask\bin\Debug\BotTask.pdb
+c:\users\pcampbell\documents\visual studio 2010\Projects\BotTask\BotTask\obj\x86\Debug\BotTask.exe
+c:\users\pcampbell\documents\visual studio 2010\Projects\BotTask\BotTask\obj\x86\Debug\BotTask.pdb
+c:\users\pcampbell\documents\visual studio 2010\Projects\BotTask\BotTask\bin\Debug\BotTask.exe.config
+c:\users\pcampbell\documents\visual studio 2010\Projects\BotTask\BotTask\bin\Debug\Newtonsoft.Json.dll
+c:\users\pcampbell\documents\visual studio 2010\Projects\BotTask\BotTask\bin\Debug\Twitterizer2.dll
