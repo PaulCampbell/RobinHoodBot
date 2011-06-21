@@ -21,7 +21,7 @@ namespace BotTask
             foreach (var a in  arrivals)
             {
                 var arrivaltime = DateTime.Parse(a.date + " " + a.scheduled_arrival_time);
-                if ((arrivaltime < DateTime.Now) && arrivaltime >  DateTime.Now.AddMinutes(-10) )
+                if ((arrivaltime < DateTime.Now) && arrivaltime > DateTime.Now.AddMinutes(-int.Parse(System.Configuration.ConfigurationManager.AppSettings["SchedulePeriod"])))
                 {
                     var greeting = "";
                     if ((arrivaltime.Hour > new DateTime(2010, 10, 9, 9,0,0).Hour && arrivaltime.Hour < new DateTime(2010, 10, 12,12,0,0).Hour))
@@ -49,7 +49,7 @@ namespace BotTask
             foreach (var d in departures)
             {
                 var arrivaltime = DateTime.Parse(d.date + " " + d.scheduled_departure_time);
-                if ((arrivaltime < DateTime.Now) && arrivaltime > DateTime.Now.AddMinutes(-10))
+                if ((arrivaltime < DateTime.Now) && arrivaltime > DateTime.Now.AddMinutes(-int.Parse(System.Configuration.ConfigurationManager.AppSettings["SchedulePeriod"])))
                 {
                     var greeting = "";
                     if ((arrivaltime.Hour > new DateTime(2010, 10, 13, 9, 0, 0).Hour && arrivaltime.Hour < new DateTime(2010, 10, 12, 12,0,0).Hour))
@@ -77,7 +77,7 @@ namespace BotTask
             tokens.ConsumerKey = System.Configuration.ConfigurationManager.AppSettings["ConsumerKey"];
             tokens.ConsumerSecret = System.Configuration.ConfigurationManager.AppSettings["ConsumerSecret"];
 
-            string query = "@robinhoodbot";
+            string query = "@robin_hood_air";
 
             SearchOptions options = new SearchOptions()
             {
@@ -114,7 +114,7 @@ namespace BotTask
                 arrive_or_depart = "either";
             }
 
-            if (tweet.CreatedDate > DateTime.Now.AddMinutes(-10))
+            if (tweet.CreatedDate > DateTime.Now.AddMinutes(-int.Parse(System.Configuration.ConfigurationManager.AppSettings["SchedulePeriod"])))
             {
                 if (arrive_or_depart != "depart")
                 {
