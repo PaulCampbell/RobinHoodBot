@@ -24,15 +24,15 @@ namespace BotTask
                 if ((arrivaltime < DateTime.Now) && arrivaltime >  DateTime.Now.AddMinutes(-10) )
                 {
                     var greeting = "";
-                    if ((arrivaltime.Hour > new DateTime(2010, 10, 10).Hour && arrivaltime.Hour < new DateTime(2010, 10, 12).Hour))
+                    if ((arrivaltime.Hour > new DateTime(2010, 10, 9, 9,0,0).Hour && arrivaltime.Hour < new DateTime(2010, 10, 12,12,0,0).Hour))
                     {
                         greeting = "Ay up!";
                     }
-                    else if ((arrivaltime.Hour > new DateTime(2010, 10, 14).Hour && arrivaltime.Hour < new DateTime(2010, 10, 16).Hour))
+                    else if ((arrivaltime.Hour > new DateTime(2010, 10, 13,13,0,0).Hour && arrivaltime.Hour < new DateTime(2010, 10, 16,16,0,0).Hour))
                     {
                         greeting = "Ows ta bin?";
                     }
-                    else if ((arrivaltime.Hour > new DateTime(2010, 10, 19).Hour && arrivaltime.Hour < new DateTime(2010, 10, 22).Hour))
+                    else if ((arrivaltime.Hour > new DateTime(2010, 10, 19,19,0,0).Hour && arrivaltime.Hour < new DateTime(2010, 10, 22,22,0,0).Hour))
                     {
                         greeting = "Now then.";
                     }
@@ -52,15 +52,15 @@ namespace BotTask
                 if ((arrivaltime < DateTime.Now) && arrivaltime > DateTime.Now.AddMinutes(-10))
                 {
                     var greeting = "";
-                    if ((arrivaltime.Hour > new DateTime(2010, 10, 10).Hour && arrivaltime.Hour < new DateTime(2010, 10, 12).Hour))
+                    if ((arrivaltime.Hour > new DateTime(2010, 10, 13, 9, 0, 0).Hour && arrivaltime.Hour < new DateTime(2010, 10, 12, 12,0,0).Hour))
                     {
                         greeting = "Now then.";
                     }
-                    else if((arrivaltime.Hour > new DateTime(2010, 10, 14).Hour && arrivaltime.Hour < new DateTime(2010, 10, 16).Hour))
+                    else if((arrivaltime.Hour > new DateTime(2010, 10, 13, 13, 0, 0).Hour && arrivaltime.Hour < new DateTime(2010, 10, 16, 16,0,0).Hour))
                     {
                         greeting = "Ay up!";
                     }
-                    else if ((arrivaltime.Hour > new DateTime(2010, 10, 19).Hour && arrivaltime.Hour < new DateTime(2010, 10, 22).Hour))
+                    else if ((arrivaltime.Hour > new DateTime(2010, 10, 19, 19,0,0).Hour && arrivaltime.Hour < new DateTime(2010, 10, 22, 22,0,0).Hour))
                     {
                         greeting = "Ows ta bin?";
                     }
