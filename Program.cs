@@ -23,7 +23,21 @@ namespace BotTask
                 var arrivaltime = DateTime.Parse(a.date + " " + a.scheduled_arrival_time);
                 if ((arrivaltime < DateTime.Now) && arrivaltime >  DateTime.Now.AddMinutes(-10) )
                 {
-                    Tweet(string.Format("Flight {0} from {1} has landed.", a.flight_number, a.from));
+                    var greeting = "";
+                    if ((arrivaltime.Hour > new DateTime(2010, 10, 10).Hour && arrivaltime.Hour < new DateTime(2010, 10, 12).Hour))
+                    {
+                        greeting = "Ay up!";
+                    }
+                    else if ((arrivaltime.Hour > new DateTime(2010, 10, 14).Hour && arrivaltime.Hour < new DateTime(2010, 10, 16).Hour))
+                    {
+                        greeting = "Ows ta bin?";
+                    }
+                    else if ((arrivaltime.Hour > new DateTime(2010, 10, 19).Hour && arrivaltime.Hour < new DateTime(2010, 10, 22).Hour))
+                    {
+                        greeting = "Now then.";
+                    }
+
+                    Tweet(string.Format("{2} Flight {0} from {1} has landed. #robinhoodairport", a.flight_number, a.from, greeting));
 
                 }
             }
@@ -37,7 +51,21 @@ namespace BotTask
                 var arrivaltime = DateTime.Parse(d.date + " " + d.scheduled_departure_time);
                 if ((arrivaltime < DateTime.Now) && arrivaltime > DateTime.Now.AddMinutes(-10))
                 {
-                    Tweet(string.Format("Flight {0} from {1} has taken off.", d.flight_number, d.destination));
+                    var greeting = "";
+                    if ((arrivaltime.Hour > new DateTime(2010, 10, 10).Hour && arrivaltime.Hour < new DateTime(2010, 10, 12).Hour))
+                    {
+                        greeting = "Now then.";
+                    }
+                    else if((arrivaltime.Hour > new DateTime(2010, 10, 14).Hour && arrivaltime.Hour < new DateTime(2010, 10, 16).Hour))
+                    {
+                        greeting = "Ay up!";
+                    }
+                    else if ((arrivaltime.Hour > new DateTime(2010, 10, 19).Hour && arrivaltime.Hour < new DateTime(2010, 10, 22).Hour))
+                    {
+                        greeting = "Ows ta bin?";
+                    }
+
+                    Tweet(string.Format("{2} Flight {0} to {1} has taken off. #robinhoodairport", d.flight_number, d.destination, greeting));
 
                 }
             }
